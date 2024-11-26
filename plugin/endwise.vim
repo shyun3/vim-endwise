@@ -14,7 +14,7 @@ augroup endwise " {{{1
   autocmd FileType 4dgl
         \ let b:endwise_addition = '\=submatch(0)=~"#" ? "#ENDIF" : submatch(0)=="while" ? "wend" : submatch(0)=="for" ? "next" : "end" . submatch(0)' |
         \ let b:endwise_words = 'IF,IFNOT,func,switch,if,while,for' |
-        \ let b:endwise_pattern = '\v%(%(^\s*\zs#%(IF|IFNOT)>)|<%(func|switch)>|<%(if|while|for)>\ze.*[^; \t]\s*$)' |
+        \ let b:endwise_pattern = '\v%(%(^\s*\zs#%(IF|IFNOT)>)|<%(func|switch)>|<%(if|while|for)>\ze\s*\(.*\)[^;]*$)' |
         \ let b:endwise_syngroups = '4dglPreCondit,4dglKeyword,4dglCond,4dglRepeat'
   autocmd FileType lua
         \ let b:endwise_addition = 'end' |
