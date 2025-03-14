@@ -16,6 +16,11 @@ augroup endwise " {{{1
         \ let b:endwise_words = 'IF,IFNOT,CONST,DATA,func,switch,if,while,for' |
         \ let b:endwise_pattern = '\v%(%(^\s*\zs#%(IF|IFNOT|CONST|DATA)>)|<%(func|switch)>|<%(if|while|for)>\ze\s*\(.*\)[^;]*$)' |
         \ let b:endwise_syngroups = '4dglPreCondit,4dglConstant,4dglPreProc,4dglKeyword,4dglCond,4dglRepeat'
+  autocmd FileType meson
+        \ let b:endwise_addition = '\="end" . submatch(0)' |
+        \ let b:endwise_words = 'if,foreach' |
+        \ let b:endwise_pattern = '\v<%(if|foreach)>' |
+        \ let b:endwise_syngroups = 'mesonConditional,mesonRepeat'
   autocmd FileType lua
         \ let b:endwise_addition = 'end' |
         \ let b:endwise_words = 'function,do,then' |
